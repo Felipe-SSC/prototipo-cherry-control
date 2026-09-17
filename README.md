@@ -7,6 +7,8 @@ Es el proyecto hermano de [cam-calibration-toolkit](../cam-calibration-toolkit),
 que resuelve un problema distinto: calibrar la cámara y medir segmentos simples
 con un tablero de referencia. Ahí se obtiene la escala mm/px; acá se usa.
 
+<p align="center"><img width="850" src="detecciones/preview_oscuro_hull.png" alt="deteccion" /></p>
+
 ## Estructura
 
 ```
@@ -71,6 +73,12 @@ vértice suelto lo mueve poco.
 máximo, diámetro equivalente) y reporta cuánto se separan entre sí. Sobre
 `fotos/claro_centro.png` la diferencia entre Feret y eje mayor de elipse es de 0,6% en
 promedio, con máximo de 3,0%.
+
+
+<div>
+<p align="center"><img width="650" src="detecciones/clasificacion_20260916_220329.png" alt="deteccion" /></p>
+
+</div>
 ____
 ## Tres limitaciones que hay que tener presentes
 

@@ -6,7 +6,6 @@
 __pycache__/
 *.pyc
 
-# Vistas anotadas y mascaras: son salida regenerable y pesan ~2 MB cada una.
-# Cada corrida de clasificar_cerezas.py agrega ~4 MB que despues no se pueden
-# podar del historial. Los .csv si se versionan: son chicos y el notebook lee uno.
-detecciones/*.png
+
+scripts/__pycache__/
+

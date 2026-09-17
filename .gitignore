@@ -1,0 +1,12 @@
+# Entorno virtual: se reconstruye con
+#   python -m venv .venv && pip install -r requirements.txt
+.venv/
+
+# Cache de Python
+__pycache__/
+*.pyc
+
+# Vistas anotadas y mascaras: son salida regenerable y pesan ~2 MB cada una.
+# Cada corrida de clasificar_cerezas.py agrega ~4 MB que despues no se pueden
+# podar del historial. Los .csv si se versionan: son chicos y el notebook lee uno.
+detecciones/*.png

@@ -1,0 +1,6 @@
+numpy>=1.26
+opencv-python>=4.8
+pandas>=2.0
+matplotlib>=3.8
+scipy>=1.11
+ipykernel>=6.0

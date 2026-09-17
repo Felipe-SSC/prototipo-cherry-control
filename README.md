@@ -63,32 +63,25 @@ python scripts/clasificar_cerezas.py fotos/oscuro.png --params detecciones/masca
 
 El calibre es el **eje mayor de la elipse ajustada** a la silueta
 (`cv2.fitEllipse`), no el Feret máximo. El Feret es la mayor distancia entre dos
-puntos de la envolvente convexa, así que basta un vértice equivocado —un
-pedicelo que agarró la máscara, una sombra, dos cerezas que se tocan— para
+puntos de la envolvente convexa, así que basta un vértice equivocado para
 inflarlo. El ajuste por mínimos cuadrados usa todos los puntos del contorno y un
 vértice suelto lo mueve poco.
 
 `medir_cerezas.py` calcula y contrasta las tres aproximaciones (eje mayor, Feret
 máximo, diámetro equivalente) y reporta cuánto se separan entre sí. Sobre
-`fotos/claro_centro.png` la diferencia entre Feret y eje mayor es de 0,6% en
+`fotos/claro_centro.png` la diferencia entre Feret y eje mayor de elipse es de 0,6% en
 promedio, con máximo de 3,0%.
-
+____
 ## Tres limitaciones que hay que tener presentes
 
 **La escala.** Sin `--mm-por-px` el calibre sale en píxeles: una foto sola no
 trae escala. Para milímetros hace falta una referencia de tamaño conocido en la
-misma foto y al mismo plano — el tablero del toolkit vecino, o una regla.
+misma foto y al mismo plano (un tablero de ajedrez o una regla).
 
 **La luz.** Los centroides de color de `TIPOS` son valores de brillo absolutos,
-medidos con la iluminación de `fotos/claro_centro.png`. Con otra luz las mismas
+medidos con la iluminación de `fotos/claro_centro.png` (No representan ningún umbral oficial!). Con otra luz las mismas
 cerezas dan V más bajo y quedan fuera de rango; el script avisa cuando más del
-30% de los objetos quedan sin clasificar. Ahí no basta con ajustar la detección:
-hay que volver a medir los centroides con esa luz.
+30% de los objetos quedan sin clasificar. En ese caso es necesario controlar la iluminación o cambiar los parámetros de detección.
 
-**La frontera entre tipo 2 y tipo 3.** Entre esos dos no hay hueco natural en la
-nube de brillo: el corte en V ≈ 192 parte la nube por el medio, así que el
-reparto es sensible a dónde quede. Para afirmarlo mejor hacen falta más cerezas
-marcadas a mano de esos dos tipos, sobre todo en V 185-200.
-
-Ninguna de las tres métricas de calibre está anclada todavía a una medición
-física: falta comparar contra pie de metro sobre cerezas conocidas.
+Ninguna de las tres métricas de calibre está validada contra una medicion física! 
+Falta comparar contra pie de metro.
